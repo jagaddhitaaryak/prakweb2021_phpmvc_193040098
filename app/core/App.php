@@ -9,7 +9,7 @@ class App {
     {
         $url = $this->parseURL();
         
-        if( file_exists('../app/controllers' . $url[0] . '.php')) {
+        if (file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
@@ -19,7 +19,7 @@ class App {
 
 
         //method
-        if ( isset ($url[1] )) {
+        if (isset($url[1])) {
             if( method_exists($this->controller, $url[1]) ) {
                 $this->method = $url[1];
                 unset($url[1]);
@@ -29,6 +29,7 @@ class App {
         //params
         if (!empty($url)) {
             $this->params = array_values($url);
+            var_dump($url);
         }
 
         //jalankan controller dan params 
